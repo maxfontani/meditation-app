@@ -1,26 +1,127 @@
-* {
+body,html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    height: 100%;
+    background: rgb(102, 17, 158);
 }
 
 .app {
-    height: 100vh;
     display: flex;
-    justify-content: space-evenly;
+    flex-flow: column nowrap;
     align-items: center;
+    justify-content: center;
+
 }
 
 .time-select, 
-.sound-picker {
-    height: 80%;
-    flex: 1;
+.sound-picker,
+.player-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin: 20px
 }
 
-.time-select {
-    background: lightblue;
+.player-container {
+    position: relative; 
 }
 
-.sound-picker {
-    background: lightgreen;
+.timer {
+    margin-top: 20px;
+}
+
+.time-select button {
+    color: white;
+    background: none;
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px 15px;
+    width: 12em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    padding: 20px;
+}
+
+.sound-picker button {
+    display: flex;
+    border: none;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-inline: 20px;
+    justify-content: center;
+    cursor:pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div > svg {
+    /* position: relative;
+    display: flex;
+    width: 30%;
+    justify-content: center; */
+    position: absolute;
+    display: flex;
+    top: 50%;
+    transform: rotate(-90deg);
+    pointer-events: none;
+    flex-basis: 120px;
+}
+
+#play {
+    position: absolute;
+    color: white;
+    top: 50%;
+    width: 50px;
+    cursor:pointer;
+}
+
+.time-display {
+    color: white;
+    font-size: 2em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+} 
+
+video {
+    position:fixed;
+    top: 0%;
+    left: 0%;
+    width: auto;
+    z-index: -1;
+    background: black;
+}
+
+
+.time-select button:hover {
+    color: black;
+    background: white;
+}
+
+.sound-picker button:nth-child(1) {
+    background: #335883;
+}
+
+.sound-picker button:nth-child(2) {
+    background: #863c37;
+}
+
+.sound-picker button img {
+    padding: 30%;
+}
+
+#b1.active,
+#b2.active,
+#b3.active {
+    color: black;
+    background: white;
+}
+
+#bv1.active {
+    background: #5492da;
+}
+
+#bv2.active {
+    background: #ee756c;
 }
