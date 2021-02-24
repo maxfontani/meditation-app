@@ -62,13 +62,14 @@ body,html {
     margin-inline: 20px;
     justify-content: center;
     align-content: center;
+    align-items: center;
     cursor:pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sound-picker button img {
-    position: relative;
-    width: 70%;
+    position: absolute;
+    width: 65%;
 }
 
 .track-outline,
