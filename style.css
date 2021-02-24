@@ -54,6 +54,7 @@ body,html {
 
 .sound-picker button {
     display: flex;
+    position: relative;
     border: none;
     width: 80px;
     height: 80px;
@@ -63,6 +64,11 @@ body,html {
     align-content: center;
     cursor:pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sound-picker button img {
+    position: relative;
+    width: 70%;
 }
 
 .track-outline,
@@ -132,10 +138,6 @@ video {
 
 .sound-picker button:nth-child(2) {
     background: #803215;;
-}
-
-.sound-picker button img {
-    padding: 1.5em;
 }
 
 #b1.active,
