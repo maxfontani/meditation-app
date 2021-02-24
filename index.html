@@ -15,35 +15,34 @@
             <button data-time='600' id="b3">10 Minutes</button>
         </div>
         <div class="sound-picker">
-            <button data-sound="./sounds/rain.mp3" data-video="./video/rain.mp4" id="bv1" class="active">
+            <button data-sound="./sounds/rain.mp3" data-video="./video/rain.mp4" data-poster="./video/poster_rain.png" id="bv1" class="active">
                 <img src="./svg/rain.svg" alt="rain">
             </button>
-            <button data-sound="./sounds/beach.mp3" data-video="./video/beach.mp4" id="bv2">
+            <button data-sound="./sounds/beach.mp3" data-video="./video/beach.mp4" data-poster="./video/poster_beach.jpg" id="bv2">
                 <img src="./svg/beach.svg" alt="beach">
             </button>
         </div>
-
         <div class="player-container">
             <audio class="song">
                 <source src="./sounds/rain.mp3" /> 
             </audio>
-            <img src="./svg/play.svg" alt="play" id="play" viewBox="0 0 20 20" class="play" />
-            <svg class="track-outline" width="100%" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="226.5" cy="226.5" r="216.5" stroke="white" stroke-width="20"/>
+            <img src="./svg/play.svg" alt="play" id="play" viewBox="0 0 20 20"/>    
+            <svg class="track-outline" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle id="track-circle" cx="226.5" cy="226.5" r="216.5" stroke-width="20"/>
             </svg>
             <svg class="moving-outline" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="226.5" cy="226.5" r="216.5" stroke="#018EBA" stroke-width="20"/>
+                <circle id="moving-circle" cx="226.5" cy="226.5" r="216.5" stroke-width="20"/>
             </svg>
         </div>
         <div class="timer">
-            <h3 class="time-display"></h3>
+            <p class="time-display"></p>
         </div>
     </div>
-    <!-- <div class="vid-container">
-        <video loop>
+    <div class="vid-container">
+        <video playsinline muted loop poster="./video/rain_poster.png">
             <source src="./video/rain.mp4" type="video/mp4" /> 
         </video>
-    </div> -->
+    </div>
     <script src="./app.js"></script>
 </body>
 </html>

@@ -1,66 +1,22 @@
 const app = () => {
     const song = document.querySelector('.song')
-    const play = document.querySelector('.play')
+    const play = document.querySelector('#play')
     const outline = document.querySelector('.moving-outline circle')
     const video = document.querySelector('video')
-
+    const trackCircle = document.querySelector('#track-circle')
+    const movingCircle = document.querySelector('#moving-circle')
     const soundsSelect = document.querySelectorAll('.sound-picker button')
     const timeDisplay = document.querySelector('.time-display')
     const timeSelect = document.querySelectorAll('.time-select button')
-
     const outlineLength = outline.getTotalLength()
-    const PLAY_DURATION = 120
     
-    let playDuration = PLAY_DURATION
-    let activeTimeSelect = 0
-    
-    resetTimer = () => {
-        outline.style.strokeDasharray = outlineLength
-        outline.style.strokeDashoffset = outlineLength
-        song.currentTime = 0
-        timeDisplay.textContent = ''
+    let playDuration = 120
+
+    calcTimeDisplay = (time) => {  
+        const seconds = Math.floor(time % 60)
+        const minutes = Math.floor(time / 60)
+        return timeDisplay.textContent = `${minutes.toLocaleString(undefined, {minimumIntegerDigits: 2})} : ${seconds.toLocaleString(undefined, {minimumIntegerDigits: 2})}`
     }
-
-    resetTimer()
-
-    toggleStyle = (id, styleName) => {
-        let elemPressed = document.getElementById(id);
-        elemPressed.classList.toggle('active')
-    } 
-
-    soundsSelect.forEach(sound => {
-        sound.addEventListener('click', function() {
-            playOff()
-            resetTimer()
-            song.src = this.getAttribute('data-sound')
-            video.src = this.getAttribute('data-video')
-            if (sound.getAttribute('class') != 'active') {
-                soundsSelect.forEach(sound => {
-                    sound.setAttribute('class','')
-                })
-                toggleStyle(sound.getAttribute('id'), 'active')   
-            }
-        })
-    })
-
-    play.addEventListener('click', () => {
-        togglePlayback(song)
-    })
-
-    timeSelect.forEach(button => {
-        button.addEventListener('click', function() {
-            playOff()
-            resetTimer()
-            playDuration = this.getAttribute('data-time')
-            timeDisplay.textContent = `${Math.floor(playDuration/60).toLocaleString(undefined, {minimumIntegerDigits: 2})}:${Math.floor(playDuration % 60).toLocaleString(undefined, {minimumIntegerDigits: 2})}`
-            if (button.getAttribute('class') != 'active') {
-                timeSelect.forEach(button => {
-                    button.setAttribute('class','')
-                })
-                toggleStyle(button.getAttribute('id'), 'active')   
-            }
-        })
-    })
 
     togglePlayback = (song) => {
         if (song.paused) {
@@ -82,11 +38,67 @@ const app = () => {
         play.src = './svg/play.svg'
     }
 
+    resetTimer = () => {
+        outline.style.strokeDasharray = outlineLength
+        outline.style.strokeDashoffset = outlineLength
+        song.currentTime = 0
+        timeDisplay.textContent = calcTimeDisplay(playDuration)
+    }
+
+    resetTimer()
+    play.addEventListener('click', () => {
+        togglePlayback(song)
+    })
+
+    soundsSelect.forEach(sound => {
+        sound.addEventListener('click', function() {
+            playOff()
+            resetTimer()
+            song.src = this.getAttribute('data-sound')
+            video.src = this.getAttribute('data-video')
+            video.poster = this.getAttribute('data-poster')
+            if (!sound.classList.contains('active')) {
+                soundsSelect.forEach(sound => {
+                    sound.classList.remove('active')
+                })
+                sound.classList.add('active')
+            }
+            if (sound.id === 'bv2') {
+                play.classList.add('play-beach')
+                timeDisplay.classList.add('play-beach')
+                outline.classList.add('play-beach')
+                trackCircle.classList.add('play-beach')
+                movingCircle.classList.add('play-beach');
+                [...timeSelect].map(button => {button.classList.add('play-beach')})
+            } else {
+                play.classList.remove('play-beach')
+                timeDisplay.classList.remove('play-beach')
+                outline.classList.remove('play-beach')
+                trackCircle.classList.remove('play-beach')
+                movingCircle.classList.remove('play-beach');
+                [...timeSelect].map(button => {button.classList.remove('play-beach')})
+            }
+        })
+    })
+
+    timeSelect.forEach(button => {
+        button.addEventListener('click', function() {
+            playOff()
+            resetTimer()
+            playDuration = this.getAttribute('data-time')
+            timeDisplay.textContent = `${Math.floor(playDuration/60).toLocaleString(undefined, {minimumIntegerDigits: 2})}:${Math.floor(playDuration % 60).toLocaleString(undefined, {minimumIntegerDigits: 2})}`
+            if (!button.classList.contains('active')) {
+                timeSelect.forEach(button => {
+                    button.classList.remove('active')
+                })
+                button.classList.toggle('active')   
+            }
+        })
+    })
+
     song.ontimeupdate = () => {
         let currentTime = song.currentTime
-        let elapsedTime = playDuration - currentTime
-        let seconds = Math.floor(elapsedTime % 60)
-        let minutes = Math.floor(elapsedTime / 60)
+        let remainingTime = playDuration - currentTime
         let progress = outlineLength - (currentTime / playDuration) * outlineLength
 
         if ((currentTime >= playDuration)) {
@@ -98,11 +110,9 @@ const app = () => {
         }
 
         outline.style.strokeDashoffset = progress
-        timeDisplay.textContent = `${minutes.toLocaleString(undefined, {minimumIntegerDigits: 2})} : ${seconds.toLocaleString(undefined, {minimumIntegerDigits: 2})}`
+        timeDisplay.textContent = calcTimeDisplay(remainingTime)
 
     }
-
-
 }
 
 app()
