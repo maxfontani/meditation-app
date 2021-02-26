@@ -12,6 +12,12 @@ const app = () => {
     
     let playDuration = 120
 
+    checkMedia = () => {
+        if (screen.width >= 1024) {
+            document.querySelector('#bv2').setAttribute('data-video','./video/beach_large.mp4')
+        }
+    }
+
     calcTimeDisplay = (time) => {  
         const seconds = Math.floor(time % 60)
         const minutes = Math.floor(time / 60)
@@ -46,6 +52,8 @@ const app = () => {
     }
 
     resetTimer()
+    checkMedia()
+
     play.addEventListener('click', () => {
         togglePlayback(song)
     })
