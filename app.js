@@ -15,6 +15,7 @@ const app = () => {
     checkMedia = () => {
         if (screen.width >= 1024) {
             document.querySelector('#bv2').setAttribute('data-video','./video/beach_large.mp4')
+            document.querySelector('#bv1').setAttribute('data-video','./video/rain_large.mp4')
         }
     }
 
