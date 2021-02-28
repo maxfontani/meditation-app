@@ -126,7 +126,7 @@ video {
     top: 0;
     left: 0;
     z-index: -1;
-    background: #041E37;
+    background: black;
   }
 
 .time-select button:hover {
