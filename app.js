@@ -14,6 +14,7 @@ const app = () => {
 
     checkMedia = () => {
         if (screen.width >= 1024) {
+            video.setAttribute('poster','./video/rain_poster_large.jpg')
             document.querySelector('#bv2').setAttribute('data-video','./video/beach_large.mp4')
             document.querySelector('#bv1').setAttribute('data-video','./video/rain_large.mp4')
         }
