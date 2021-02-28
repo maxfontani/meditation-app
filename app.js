@@ -17,6 +17,7 @@ const app = () => {
             video.setAttribute('poster','./video/poster_rain_large.jpg')
             document.querySelector('#bv2').setAttribute('data-video','./video/beach_large.mp4')
             document.querySelector('#bv1').setAttribute('data-video','./video/rain_large.mp4')
+            document.querySelector('#bv1').setAttribute('data-poster','./video/poster_rain_large.jpg')
         }
     }
 
@@ -74,19 +75,19 @@ const app = () => {
                 sound.classList.add('active')
             }
             if (sound.id === 'bv2') {
-                play.classList.add('play-beach')
-                timeDisplay.classList.add('play-beach')
-                outline.classList.add('play-beach')
-                trackCircle.classList.add('play-beach')
-                movingCircle.classList.add('play-beach');
-                [...timeSelect].map(button => {button.classList.add('play-beach')})
+                // play.classList.add('play-beach')
+                // timeDisplay.classList.add('play-beach')
+                // outline.classList.add('play-beach')
+                // trackCircle.classList.add('play-beach')
+                // movingCircle.classList.add('play-beach');
+                [...timeSelect, play, timeDisplay, outline, trackCircle, movingCircle].map(elem => {elem.classList.add('play-beach')})
             } else {
-                play.classList.remove('play-beach')
-                timeDisplay.classList.remove('play-beach')
-                outline.classList.remove('play-beach')
-                trackCircle.classList.remove('play-beach')
-                movingCircle.classList.remove('play-beach');
-                [...timeSelect].map(button => {button.classList.remove('play-beach')})
+                // play.classList.remove('play-beach')
+                // timeDisplay.classList.remove('play-beach')
+                // outline.classList.remove('play-beach')
+                // trackCircle.classList.remove('play-beach')
+                // movingCircle.classList.remove('play-beach');
+                [...timeSelect, play, timeDisplay, outline, trackCircle, movingCircle].map(elem => {elem.classList.remove('play-beach')})
             }
         })
     })
