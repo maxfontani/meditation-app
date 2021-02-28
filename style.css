@@ -134,11 +134,13 @@ video {
 }
 
 #rainImg {
-    background: #041E37;
+    /* background: #041E37; */
+    background: lightslategray;
 }
 
-#beachImg {
-    background: #803215;;
+#bv1, #bv2 {
+    /* background: #803215;; */
+    background: lightslategray;
 }
 
 #b1.active,

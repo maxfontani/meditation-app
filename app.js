@@ -14,7 +14,7 @@ const app = () => {
 
     checkMedia = () => {
         if (screen.width >= 1024) {
-            video.setAttribute('poster','./video/rain_poster_large.jpg')
+            video.setAttribute('poster','./video/poster_rain_large.jpg')
             document.querySelector('#bv2').setAttribute('data-video','./video/beach_large.mp4')
             document.querySelector('#bv1').setAttribute('data-video','./video/rain_large.mp4')
         }
@@ -65,8 +65,8 @@ const app = () => {
             playOff()
             resetTimer()
             song.src = this.getAttribute('data-sound')
-            video.src = this.getAttribute('data-video')
             video.poster = this.getAttribute('data-poster')
+            video.src = this.getAttribute('data-video')
             if (!sound.classList.contains('active')) {
                 soundsSelect.forEach(sound => {
                     sound.classList.remove('active')
@@ -121,7 +121,6 @@ const app = () => {
 
         outline.style.strokeDashoffset = progress
         timeDisplay.textContent = calcTimeDisplay(remainingTime)
-
     }
 }
 
