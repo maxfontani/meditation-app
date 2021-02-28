@@ -17,10 +17,10 @@
         </div>
         <div class="sound-picker">
             <button data-sound="./sounds/rain.mp3" data-video="./video/rain.mp4" data-poster="./video/poster_rain.png" id="bv1" class="active">
-                <img src="./svg/rain.svg" alt="rain">
+                <img id="rainImg" src="./svg/rain.svg" alt="rain">
             </button>
             <button data-sound="./sounds/beach.mp3" data-video="./video/beach.mp4" data-poster="./video/poster_beach.jpg" id="bv2">
-                <img src="./svg/beach.svg" alt="beach">
+                <img id="beachImg" src="./svg/beach.svg" alt="beach">
             </button>
         </div>
         <div class="player-container">
@@ -41,7 +41,7 @@
     </div>
     <div class="vid-container">
         <video playsinline muted loop poster="./video/poster_rain.jpg">
-            <source src="./video/rain.mp4" type="video/mp4" media="only screen and (min-width: 64.063em)"/> 
+            <source src="./video/rain.mp4" type="video/mp4"/> 
         </video>
     </div>
     <script src="./app.js"></script>
