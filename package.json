@@ -1,0 +1,24 @@
+{
+  "name": "meditation-app",
+  "version": "1.0.0",
+  "description": "A meditation PWA mini project good for learning about SVGs, Flexbox, and Service Worker.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxfontani/meditation-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxfontani/meditation-app/issues"
+  },
+  "homepage": "https://github.com/maxfontani/meditation-app#readme",
+  "dependencies": {
+    "workbox-routing": "^6.1.1",
+    "workbox-strategies": "^6.1.1"
+  }
+}
