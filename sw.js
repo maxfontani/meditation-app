@@ -9,7 +9,8 @@ const CONTENT_TO_CACHE = [
   '/video/rain.mp4',
   '/video/rain_large.mp4',
   '/sounds/beach.mp3',
-  '/sounds/rain.mp3'
+  '/sounds/rain.mp3',
+  '/offline.html'
 ]
 
 self.addEventListener('install', event => {
@@ -21,13 +22,18 @@ self.addEventListener('install', event => {
 })
 
 self.addEventListener('fetch', event => {
+
+  // if (event.request.url === location.toString()) {
+  //   event.respondWith(fetch(event.request.url) || caches.match('/offline.html'))
+  // }
+
   event.respondWith(
     caches.match(event.request).then(response => {
-      return response || fetch(event.request.url).then(response => response).catch(err => console.log('fetching network: ', err))
+      return response || fetch(event.request.url).catch(err => console.log('ERR fetching network: ', event.request.url))
     })
     .catch(err => console.log(err))
-  );
-});
+  )
+})
       
 self.addEventListener('activate', event => {
   // delete any caches that aren't in expectedCaches
