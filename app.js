@@ -12,12 +12,6 @@ const app = () => {
     
     let playDuration = 120
 
-    navigator.serviceWorker ?
-    window.addEventListener('load', e => {
-       navigator.serviceWorker.register('./sw.js')
-      })
-    : console.log('No service workers for hire..')
-
     const checkMedia = () => {
         if (screen.width >= 1024) {
             video.setAttribute('poster','./video/poster_rain_large.jpg')
@@ -28,13 +22,13 @@ const app = () => {
         }
     }
 
-    calcTimeDisplay = (time) => {  
+    const calcTimeDisplay = (time) => {  
         const seconds = Math.floor(time % 60)
         const minutes = Math.floor(time / 60)
         return timeDisplay.textContent = `${minutes.toLocaleString(undefined, {minimumIntegerDigits: 2})} : ${seconds.toLocaleString(undefined, {minimumIntegerDigits: 2})}`
     }
 
-    togglePlayback = (song) => {
+    const togglePlayback = (song) => {
         if (song.paused) {
             playOn()
         } else {
@@ -42,19 +36,19 @@ const app = () => {
         }
     }
 
-    playOn = () => {
+    const playOn = () => {
         song.play()
         video.play()
         play.src = './svg/pause.svg'
     }
 
-    playOff = () => {
+    const playOff = () => {
         song.pause()
         video.pause()
         play.src = './svg/play.svg'
     }
 
-    resetTimer = () => {
+    const resetTimer = () => {
         outline.style.strokeDasharray = outlineLength
         outline.style.strokeDashoffset = outlineLength
         song.currentTime = 0

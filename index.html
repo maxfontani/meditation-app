@@ -46,6 +46,13 @@
             </video>
         </div>
     </div>
-    <script src="./app.js"></script>
+    <script src="./bundle.js"></script>
+    <script>
+        navigator.serviceWorker ?
+            window.addEventListener('load', e => {
+                navigator.serviceWorker.register('./sw.js')
+            })
+            : console.log('No service workers for hire..')
+    </script>
 </body>
 </html>
