@@ -41,18 +41,11 @@
             <p class="time-display"></p>
         </div>
         <div class="vid-container">
-            <video playsinline muted loop poster="./video/poster_rain.jpg" preload="auto">
+            <video playsinline muted loop poster="./video/poster_rain.jpg">
                 <source id='vidSrc' src="./video/rain.mp4" type="video/mp4"/> 
             </video>
         </div>
     </div>
     <script src="./bundle.js"></script>
-    <script>
-        navigator.serviceWorker ?
-            window.addEventListener('load', e => {
-                navigator.serviceWorker.register('./sw.js')
-            })
-            : console.log('No service workers for hire..')
-    </script>
 </body>
 </html>

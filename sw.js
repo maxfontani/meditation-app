@@ -1,4 +1,4 @@
-const CACHE_NAME = 'static-v1'
+const CACHE_NAME = 'static-v2'
 
 const CONTENT_TO_CACHE = [
   '/video/beach.mp4',
@@ -7,7 +7,9 @@ const CONTENT_TO_CACHE = [
   '/video/poster_rain.jpg',
   '/video/poster_rain_large.jpg',
   '/video/rain.mp4',
-  '/video/rain_large.mp4'
+  '/video/rain_large.mp4',
+  '/sounds/beach.mp3',
+  '/sounds/rain.mp3'
 ]
 
 self.addEventListener('install', event => {
@@ -18,18 +20,15 @@ self.addEventListener('install', event => {
   )
 })
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((r) => {
-      console.log(CACHE_NAME+' SW fetching resource: '+e.request.url)
-      return r || fetch(e.request).then(response => {
-        return response
-      })
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request.url).then(response => response).catch(err => console.log('fetching network: ', err))
     })
-  )}
-)
+    .catch(err => console.log(err))
+  );
+});
       
-
 self.addEventListener('activate', event => {
   // delete any caches that aren't in expectedCaches
   event.waitUntil(

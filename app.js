@@ -12,6 +12,13 @@ const app = () => {
     
     let playDuration = 120
 
+    // SERVICE WORKER
+    navigator.serviceWorker ?
+    window.addEventListener('load', e => {
+        navigator.serviceWorker.register('./sw.js')
+    })
+    : console.log('No service workers for hire..')
+
     const checkMedia = () => {
         if (screen.width >= 1024) {
             video.setAttribute('poster','./video/poster_rain_large.jpg')
