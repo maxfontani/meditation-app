@@ -23,15 +23,18 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
 
-  if (event.request.url === (location.protocol + "//" + location.hostname)) {
-    event.respondWith(fetch(event.request.url) || caches.match('/offline.html'))
+  if (event.request.headers.has('range')) {
+    return;
+  }
+
+  if (event.request.url.has('meditation-app') || event.request.url.has('localhost')) {
+    return;
   }
 
   event.respondWith(
     caches.match(event.request).then(response => {
       return response || fetch(event.request.url).catch(err => console.log('ERR fetching network: ', event.request.url))
     })
-    .catch(err => console.log(err))
   )
 })
       
