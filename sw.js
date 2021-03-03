@@ -1,4 +1,4 @@
-const CACHE_NAME = 'static-v2'
+const CACHE_NAME = 'static-v3'
 
 const CONTENT_TO_CACHE = [
   '/video/beach.mp4',
@@ -23,9 +23,9 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
 
-  // if (event.request.url === location.toString()) {
-  //   event.respondWith(fetch(event.request.url) || caches.match('/offline.html'))
-  // }
+  if (event.request.url === (location.protocol + "//" + location.hostname)) {
+    event.respondWith(fetch(event.request.url) || caches.match('/offline.html'))
+  }
 
   event.respondWith(
     caches.match(event.request).then(response => {
