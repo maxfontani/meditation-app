@@ -27,7 +27,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  if (event.request.url.has('meditation-app') || event.request.url.has('localhost')) {
+  if (event.request.url.includes('meditation-app') || event.request.url.includes('localhost')) {
     return;
   }
 
