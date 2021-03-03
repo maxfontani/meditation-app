@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
   console.log('Installing SW cache', CACHE_NAME);
 
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(CONTENT_TO_CACHE))
+    caches.open(CACHE_NAME).then(cache => cache.addAll(CONTENT_TO_CACHE)).catch(err => console.log(err))
   )
 })
 
