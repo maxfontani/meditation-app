@@ -26,6 +26,9 @@ const app = () => {
             document.querySelector('#bv2').setAttribute('data-video','./video/beach_large.mp4')
             document.querySelector('#bv1').setAttribute('data-video','./video/rain_large.mp4')
             document.querySelector('#bv1').setAttribute('data-poster','./video/poster_rain_large.jpg')
+        } else {
+            video.setAttribute('poster','./video/poster_rain.jpg')
+            video.setAttribute('src','./video/rain.mp4')
         }
     }
 
