@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/maxfontani/meditation-app/issues"
   },
-  "homepage": "https://github.com/maxfontani/meditation-app",
+  "homepage": "https://github.com/maxfontani/meditation-app/",
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.13.9",
     "workbox-build": "^6.1.1",

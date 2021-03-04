@@ -4,3 +4,4 @@ sw_manual.js
 sw_workbox.js
 sw_google.js
 babel.config.json
+sw_no_trail.js
